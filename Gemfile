@@ -1,5 +1,11 @@
 source 'https://rubygems.org'
 
+
+gem 'bootstrap-sass'
+gem 'sprockets', '2.11.0'
+gem 'sass-rails'
+
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
 end
@@ -13,7 +19,7 @@ gem 'rails', '4.0.4'
 gem 'pg'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.2'
+
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'

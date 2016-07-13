@@ -11,10 +11,6 @@ RSpec.describe GramsController, type: :controller do
       expect(response).to have_http_status(:forbidden)
     end
 
-
-
-
-
     it "shouldn't let unauthenticated users destroy a gram" do
       p = FactoryGirl.create(:gram)
       delete :destroy, id: p.id
@@ -94,9 +90,6 @@ end
 
     end
 
-
-
-
     it "shouldn't let unauthenticated users edit a gram" do
           p = FactoryGirl.create(:gram)
           get :edit, id: p.id
@@ -164,13 +157,17 @@ end
             user = FactoryGirl.create(:user)
             sign_in user
 
-            post :create, gram: {message: 'Hello!'}
+            post :create, gram: {
+            message: 'Hello!',
+            picture: fixture_file_upload("/picture.png", 'image/png')
+          }
+
             expect(response).to redirect_to root_path
 
             gram = Gram.last
             expect(gram.message).to eq("Hello!")
             expect(gram.user).to eq(user)
-          end
+      end
 
           it "should properly deal with validation errors" do
             user = FactoryGirl.create(:user)
